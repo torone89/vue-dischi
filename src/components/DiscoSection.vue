@@ -31,28 +31,19 @@ export default {
     };
   },
 
-  mounted() {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((res) => {
-        console.log(res.data);
-        this.albumsList = res.data.response;
-      });
+  methods: {
+    GetAlbums() {
+      axios
+        .get("https://flynn.boolean.careers/exercises/api/array/music")
+        .then((res) => {
+          console.log(res.data);
+          this.albumsList = res.data.response;
+        });
+    },
   },
-
-  // methods: {
-  //   GetAlbums() {
-  //     axios
-  //       .get("https://flynn.boolean.careers/exercises/api/array/music")
-  //       .then((res) => {
-  //         console.log(res.data);
-  //         this.albumsList = res.data.response;
-  //       });
-  //   },
-  //   mounted() {
-  //     this.GetAlbums();
-  //   },
-  // },
+  mounted() {
+    this.GetAlbums();
+  },
 };
 </script>
 
