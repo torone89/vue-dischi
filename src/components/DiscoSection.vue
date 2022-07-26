@@ -63,4 +63,8 @@ export default {
 main {
   background-color: $bg-color;
 }
+
+.container {
+  padding: 20px 150px;
+}
 </style>
