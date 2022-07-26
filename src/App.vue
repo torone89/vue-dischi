@@ -8,6 +8,7 @@
 <script>
 import DiscoSection from "./components/DiscoSection.vue";
 import BaseHeader from "./components/BaseHeader.vue";
+import "./assets/scss/style.scss";
 
 export default {
   name: "App",
@@ -18,6 +19,3 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import "../com/scss/var.sccss";
-</style>

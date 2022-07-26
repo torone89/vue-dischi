@@ -11,9 +11,6 @@
 <script>
 export default {
   name: "BaseHeader",
-  props: {
-    msg: String,
-  },
 };
 </script>
 
@@ -21,12 +18,10 @@ export default {
 <style scoped lang="scss">
 @import "../assets/scss/vars";
 header {
-  background-color: $bg-color;
+  background-color: $primary-color;
   height: 100px;
 }
 img {
   height: 80%;
-  vertical-align: middle;
-  line-height: 100px;
 }
 </style>

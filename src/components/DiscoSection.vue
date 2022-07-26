@@ -1,24 +1,66 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <!-- COMPONENTE GENERATE DISCO E LOGICA V-FOR -->
-    <generate-disco />
-  </div>
+  <!-- COMPONENTE GENERATE DISCO E LOGICA V-FOR -->
+
+  <main>
+    <div class="container">
+      <div class="disc-card-box row justify-content-between">
+        <generate-disco
+          v-for="(album, index) in albumsList"
+          :key="index"
+          :image="album.poster"
+          :title="album.title"
+          :author="album.author"
+          :year="album.year"
+        />
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>
 import GenerateDisco from "./GenerateDisco.vue";
+import axios from "axios";
 export default {
   name: "DiscoSection",
   components: {
     GenerateDisco,
   },
-  props: {
-    msg: String,
+  data() {
+    return {
+      albumsList: [],
+    };
   },
+
+  mounted() {
+    axios
+      .get("https://flynn.boolean.careers/exercises/api/array/music")
+      .then((res) => {
+        console.log(res.data);
+        this.albumsList = res.data.response;
+      });
+  },
+
+  // methods: {
+  //   GetAlbums() {
+  //     axios
+  //       .get("https://flynn.boolean.careers/exercises/api/array/music")
+  //       .then((res) => {
+  //         console.log(res.data);
+  //         this.albumsList = res.data.response;
+  //       });
+  //   },
+  //   mounted() {
+  //     this.GetAlbums();
+  //   },
+  // },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "../assets/scss/vars";
+
+main {
+  background-color: $bg-color;
+}
 </style>
