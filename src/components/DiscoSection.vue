@@ -56,6 +56,6 @@ main {
 }
 
 .container {
-  padding: 20px 150px;
+  padding: 20px 120px;
 }
 </style>

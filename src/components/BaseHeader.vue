@@ -22,6 +22,6 @@ header {
   height: 100px;
 }
 img {
-  height: 80%;
+  height: 50%;
 }
 </style>
