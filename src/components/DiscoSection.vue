@@ -5,12 +5,10 @@
     <div class="container">
       <div class="disc-card-box row justify-content-between">
         <generate-disco
-          v-for="(album, index) in albumsList"
+          v-for="(disc, index) in albumsList"
           :key="index"
-          :image="album.poster"
-          :title="album.title"
-          :author="album.author"
-          :year="album.year"
+          :disc="disc"
+        />
         />
       </div>
     </div>
