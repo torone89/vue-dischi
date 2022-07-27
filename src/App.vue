@@ -1,12 +1,8 @@
 <template>
   <div>
     <base-header />
-    <select-bar
-      :values="['All', 'Pop', 'Rock', 'Jazz', 'Metal']"
-      @selectedGenre="filterGenere"
-      :discs="filteredListGenre"
-    />
-    <disco-section :albumsList="albumsList" />
+    <SelectBar :genres="genres" @genre-changed="albumsFilter" />
+    <disco-section :albumsList="filteredListGenre" />
   </div>
 </template>
 
@@ -29,25 +25,40 @@ export default {
       filteredListGenre: [],
     };
   },
-
   methods: {
+    albumsFilter(value) {
+      let filteredListGenre;
+      if (value === "All") {
+        filteredListGenre = this.albumsList;
+      } else {
+        filteredListGenre = this.albumsList.filter((album) => {
+          return album.genre === value;
+        });
+      }
+      this.filteredListGenre = filteredListGenre;
+    },
     GetAlbums() {
       axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then((res) => {
           console.log(res.data);
           this.albumsList = res.data.response;
+          this.filteredListGenre = res.data.response;
         });
     },
-    filterGenere(keyword) {
-      this.albumsList.filter((disc) => {
-        return (
-          disc.genre.toLowerCase() === keyword.toLowerCase() ||
-          keyword.toLowerCase() === "all"
-        );
-      });
+  },
+  computed: {
+    genres() {
+      let genres = [];
+      for (let album of this.albumsList) {
+        if (!genres.includes(album.genre)) {
+          genres.push(album.genre);
+        }
+      }
+      return genres;
     },
   },
+
   mounted() {
     this.GetAlbums();
   },
