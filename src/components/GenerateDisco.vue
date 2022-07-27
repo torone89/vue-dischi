@@ -1,5 +1,5 @@
 <template>
-  <div class="disc-card text-center m-3 col-2 off-set-1 p-2">
+  <div class="disc-card text-center m-3 col-2 p-2">
     <img class="image-album mt-2" :src="disc.poster" />
     <div class="title pt-2 mt-2">{{ disc.title }}</div>
     <div class="info">{{ disc.author }}</div>
